@@ -1,7 +1,7 @@
 {
   "id": "com.thomashoussin.fronius",
-  "version": "0.1.15",
-  "compatibility": ">=5.0.0",
+  "version": "0.1.16",
+  "compatibility": ">=12.3.0",
   "sdk": 3,
   "name": {
     "en": "Fronius"

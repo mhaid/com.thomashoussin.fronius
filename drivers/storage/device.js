@@ -12,10 +12,13 @@ class StorageDevice extends FroniusDevice {
         let voltage = typeof data.Controller.Voltage_DC == 'undefined' ? 0 : data.Controller.Voltage_DC;
         let current = typeof data.Controller.Current_DC == 'undefined' ? 0 : data.Controller.Current_DC;
 
-        //Current maximum capacity
-        this.setCapabilityValue('meter_power', typeof data.Controller.Capacity_Maximum == 'undefined' ? 0 : data.Controller.Capacity_Maximum / 1000);
+        //Current maximum capacity - removed this is not what's expected in meter / homey app
+        //this.setCapabilityValue('meter_power', typeof data.Controller.Capacity_Maximum == 'undefined' ? 0 : data.Controller.Capacity_Maximum / 1000);
+        
         //Voltage DC
         this.setCapabilityValue('measure_voltage', voltage );
+        // Charging state
+        this.setCapabilityValue('battery_charging_state', current > 0 ? 'charging' : (current < 0 ? 'discharging' : 'idle'));
         //Voltage Current
         this.setCapabilityValue('measure_current', current);
         //temp ; default to 0 

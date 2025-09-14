@@ -3,19 +3,16 @@
   "name": {
     "en": "Storage"
   },
-  "class": "solarpanel",
+  "class": "battery",
   "capabilities": [
     "measure_power",
     "measure_current",
     "measure_voltage",
     "measure_battery",
-    "meter_power",
-    "measure_temperature"
+    "measure_temperature",
+    "battery_charging_state"
   ],
   "capabilitiesOptions": {
-    "meter_power": {
-      "title": { "en": "Current maximum capacity" }
-    },
     "measure_current": {
       "title": { "en": "Battery output current" }
     },
@@ -33,7 +30,7 @@
     }
   },
   "energy": {
-    "batteries": [ "INTERNAL" ]
+    "homeBattery": true
   },
   "images": {
     "large": "/drivers/storage/assets/images/large.png",
