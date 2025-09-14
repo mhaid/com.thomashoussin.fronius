@@ -4,6 +4,23 @@ const FroniusDevice = require('../../lib/device.js');
 
 class StorageDevice extends FroniusDevice {
 
+    /**
+ * onInit is called when the device is initialized.
+ */
+    async onInit() {
+        this.log('Device has been initialized');
+
+        if (!this.hasCapability('battery_charging_state')) {
+            console.log(`Adding capability battery_charging_state to device ${this.getName()}`);
+            this.addCapability('battery_charging_state');
+        }
+
+        // Enable device polling
+        this.polling = true;
+        this.addListener('poll', this.pollDevice);
+        this.emit('poll');
+    }
+
     getUpdatePath() {
         return '/solar_api/v1/GetStorageRealtimeData.cgi?';
     }
@@ -14,9 +31,9 @@ class StorageDevice extends FroniusDevice {
 
         //Current maximum capacity - removed this is not what's expected in meter / homey app
         //this.setCapabilityValue('meter_power', typeof data.Controller.Capacity_Maximum == 'undefined' ? 0 : data.Controller.Capacity_Maximum / 1000);
-        
+
         //Voltage DC
-        this.setCapabilityValue('measure_voltage', voltage );
+        this.setCapabilityValue('measure_voltage', voltage);
         // Charging state
         this.setCapabilityValue('battery_charging_state', current > 0 ? 'charging' : (current < 0 ? 'discharging' : 'idle'));
         //Voltage Current
