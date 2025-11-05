@@ -82,5 +82,8 @@
   },
   "0.1.16": {
     "en": "Changed storage class to battery"
+  },
+  "0.1.17": {
+    "en": "Add battery charging state capability check at init"
   }
 }
