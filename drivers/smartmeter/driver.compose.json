@@ -1,130 +1,130 @@
 {
-  "id": "smartmeter",
-  "name": {
-    "en": "Smartmeter"
-  },
-  "class": "sensor",
-  "capabilities": [
-    "measure_power",
-    "measure_current",
-    "measure_voltage",
-    "measure_frequency",
-    "meter_power",
-    "meter_power.injected",
-    "measure_current.phase1",
-    "measure_current.phase2",
-    "measure_current.phase3"
-  ],
-  "capabilitiesOptions": {
-    "meter_power": {
-      "title": { "en": "Energy consumed" }
-    },
-    "meter_power.injected": {
-      "title": { "en": "Energy injected" }
-    },
-    "measure_current": {
-      "title": { "en": "Current" }
-    },
-    "measure_current.phase1": {
-      "title": { "en": "Current P1" }
-    },
-    "measure_current.phase2": {
-      "title": { "en": "Current P2" }
-    },
-    "measure_current.phase3": {
-      "title": { "en": "Current P3" }
-    },
-    "measure_voltage": {
-      "title": { "en": "Voltage" }
-    },
-    "measure_frequency": {
-      "title": { "en": "Phase frequency" }
-    }
-  },
-  "energy": {
-    "cumulative": true,
-    "cumulativeImportedCapability": "meter_power",
-    "cumulativeExportedCapability": "meter_power.injected"
-  },
-  "images": {
-    "large": "/drivers/smartmeter/assets/images/large.png",
-    "small": "/drivers/smartmeter/assets/images/small.png"
-  },
-  "pair": [
-    {
-      "id": "enter_ip",
-      "next": "list_devices"
-    },
-    {
-      "id": "list_devices",
-      "template": "list_devices",
-      "navigation": {
-        "prev": "enter_ip",
-        "next": "add_devices"
-      },
-      "options": {
-        "singular": false
-      }
-    },
-    {
-      "id": "add_devices",
-      "template": "add_devices"
-    }
-  ],
-  "settings": [
-    {
-      "type": "group",
-      "label": {
-        "en": "Request settings"
-      },
-      "children": [
-        {
-          "id": "ip",
-          "type": "text",
-          "label": {
-            "en": "Fronius Datamanager IP address"
-          }
-        },
-        {
-          "id": "DeviceId",
-          "type": "number",
-          "label": {
-            "en": "Fronius inverter DeviceId"
-          }
-        },
-        {
-          "id": "polling_interval",
-          "type": "number",
-          "value": 60,
-          "label": {
-            "en": "Polling interval for data collection, in seconds"
-          }
-        }
-      ]
-    },
-    {
-      "id": "cumulative",
-      "type": "checkbox",
-      "value": true,
-      "label": {
-        "en": "Make cumulative in Energy tab"
-      }
-    },
-    {
-      "id": "threePhase",
-      "type": "checkbox",
-      "value": false,
-      "label": {
-        "en": "Report 3-phase if possible"
-      }
-    },
-    {
-      "id": "gen24meterbug",
-      "type": "checkbox",
-      "value": false,
-      "label": {
-        "en": "Use workaround for GEN24 Smartmeter (only if no data reported)"
-      }
-    }
-  ]
+	"id": "smartmeter",
+	"name": {
+		"en": "Smartmeter"
+	},
+	"class": "sensor",
+	"capabilities": [
+		"measure_power",
+		"measure_current",
+		"measure_voltage",
+		"measure_frequency",
+		"meter_power",
+		"meter_power.injected",
+		"measure_current.phase1",
+		"measure_current.phase2",
+		"measure_current.phase3"
+	],
+	"capabilitiesOptions": {
+		"meter_power": {
+			"title": { "en": "Energy consumed" }
+		},
+		"meter_power.injected": {
+			"title": { "en": "Energy injected" }
+		},
+		"measure_current": {
+			"title": { "en": "Current" }
+		},
+		"measure_current.phase1": {
+			"title": { "en": "Current P1" }
+		},
+		"measure_current.phase2": {
+			"title": { "en": "Current P2" }
+		},
+		"measure_current.phase3": {
+			"title": { "en": "Current P3" }
+		},
+		"measure_voltage": {
+			"title": { "en": "Voltage" }
+		},
+		"measure_frequency": {
+			"title": { "en": "Phase frequency" }
+		}
+	},
+	"energy": {
+		"cumulative": true,
+		"cumulativeImportedCapability": "meter_power",
+		"cumulativeExportedCapability": "meter_power.injected"
+	},
+	"images": {
+		"large": "/drivers/smartmeter/assets/images/large.png",
+		"small": "/drivers/smartmeter/assets/images/small.png"
+	},
+	"pair": [
+		{
+			"id": "enter_ip",
+			"next": "list_devices"
+		},
+		{
+			"id": "list_devices",
+			"template": "list_devices",
+			"navigation": {
+				"prev": "enter_ip",
+				"next": "add_devices"
+			},
+			"options": {
+				"singular": false
+			}
+		},
+		{
+			"id": "add_devices",
+			"template": "add_devices"
+		}
+	],
+	"settings": [
+		{
+			"type": "group",
+			"label": {
+				"en": "Request settings"
+			},
+			"children": [
+				{
+					"id": "ip",
+					"type": "text",
+					"label": {
+						"en": "Fronius Datamanager IP address"
+					}
+				},
+				{
+					"id": "DeviceId",
+					"type": "number",
+					"label": {
+						"en": "Fronius inverter DeviceId"
+					}
+				},
+				{
+					"id": "polling_interval",
+					"type": "number",
+					"value": 60,
+					"label": {
+						"en": "Polling interval for data collection, in seconds"
+					}
+				}
+			]
+		},
+		{
+			"id": "cumulative",
+			"type": "checkbox",
+			"value": true,
+			"label": {
+				"en": "Make cumulative in Energy tab"
+			}
+		},
+		{
+			"id": "threePhase",
+			"type": "checkbox",
+			"value": false,
+			"label": {
+				"en": "Report 3-phase if possible"
+			}
+		},
+		{
+			"id": "gen24meterbug",
+			"type": "checkbox",
+			"value": false,
+			"label": {
+				"en": "Use workaround for GEN24 Smartmeter (only if no data reported)"
+			}
+		}
+	]
 }
