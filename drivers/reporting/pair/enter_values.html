@@ -10,9 +10,9 @@
         return `${s4() + s4()}-${s4()}-${s4()}-${s4()}-${s4()}${s4()}${s4()}`;
     }
 
-    function doSubmit(){
-        let hostname = document.getElementById('hostname').value;
-        let name = document.getElementById('name').value;
+    function _doSubmit(){
+        const hostname = document.getElementById('hostname').value;
+        const name = document.getElementById('name').value;
 
         if (!hostname || !name) {
             Homey.alert('Please fill in all fields');
@@ -21,17 +21,17 @@
 
             Homey.emit('validate', { "host": hostname })
                 .then(result => {
-                    if (result == null || result == '' || result instanceof Error) {
+                    if (result == null || result === '' || result instanceof Error) {
                         Homey.alert(result);
                     } else {
-                        let deviceDefinition = {
+                        const deviceDefinition = {
                             name: name,
                             data: { id: getUIID() },
                             settings: { ip: hostname, DeviceId: result }
                         };
 
                         Homey.createDevice(deviceDefinition)
-                            .then(function (res) {
+                            .then((_res) => {
                                 Homey.done();
                             })
                             .catch(error => {

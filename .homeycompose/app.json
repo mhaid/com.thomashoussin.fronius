@@ -1,53 +1,51 @@
 {
-  "id": "com.thomashoussin.fronius",
-  "version": "0.1.14",
-  "compatibility": ">=5.0.0",
-  "sdk": 3,
-  "name": {
-    "en": "Fronius"
-  },
-  "description": {
-    "en": "Taking your energy supply in your own hands"
-  },
-  "brandColor": "#ED1C24",
-  "tags": {
-    "en": [
-      "fronius",
-      "PV",
-      "Smartmeter",
-      "solar",
-      "panels",
-      "inverter",
-      "storage",
-      "battery",
-      "ohmpilot"
-    ]
-  },
-  "category": [
-    "energy"
-  ],
-  "permissions": [],
-  "images": {
-    "large": "/assets/images/large.png",
-    "small": "/assets/images/small.png"
-  },
-  "author": {
-    "name": "Thomas Houssin",
-    "email": "thomas.houssin@gmail.com"
-  },
-  "contributing": {
-    "donate": {
-      "paypal": {
-        "username": "thomashoussin958"
-      },
-      "githubSponsors": {
-        "username": "ThomasHoussin"
-      }
-    }
-  },
-  "bugs": {
-    "url": "https://github.com/ThomasHoussin/com.thomashoussin.fronius/issues"
-  },
-  "source": "https://github.com/ThomasHoussin/com.thomashoussin.fronius",
-  "homeyCommunityTopicId": 38557
+	"id": "com.thomashoussin.fronius",
+	"version": "0.1.17",
+	"compatibility": ">=12.3.0",
+	"sdk": 3,
+	"name": {
+		"en": "Fronius"
+	},
+	"description": {
+		"en": "Taking your energy supply in your own hands"
+	},
+	"brandColor": "#ED1C24",
+	"tags": {
+		"en": [
+			"fronius",
+			"PV",
+			"Smartmeter",
+			"solar",
+			"panels",
+			"inverter",
+			"storage",
+			"battery",
+			"ohmpilot"
+		]
+	},
+	"category": ["energy"],
+	"permissions": [],
+	"images": {
+		"large": "/assets/images/large.png",
+		"small": "/assets/images/small.png"
+	},
+	"author": {
+		"name": "Thomas Houssin",
+		"email": "thomas.houssin@gmail.com"
+	},
+	"contributing": {
+		"donate": {
+			"paypal": {
+				"username": "thomashoussin958"
+			},
+			"githubSponsors": {
+				"username": "ThomasHoussin"
+			}
+		}
+	},
+	"bugs": {
+		"url": "https://github.com/ThomasHoussin/com.thomashoussin.fronius/issues"
+	},
+	"source": "https://github.com/ThomasHoussin/com.thomashoussin.fronius",
+	"homeyCommunityTopicId": 38557
 }

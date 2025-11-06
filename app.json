@@ -1,8 +1,8 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.thomashoussin.fronius",
-  "version": "0.1.14",
-  "compatibility": ">=5.0.0",
+  "version": "0.1.17",
+  "compatibility": ">=12.3.0",
   "sdk": 3,
   "name": {
     "en": "Fronius"
@@ -51,6 +51,7 @@
   },
   "source": "https://github.com/ThomasHoussin/com.thomashoussin.fronius",
   "homeyCommunityTopicId": 38557,
+  "esm": true,
   "drivers": [
     {
       "id": "GEN24-storage",
@@ -791,21 +792,16 @@
       "name": {
         "en": "Storage"
       },
-      "class": "solarpanel",
+      "class": "battery",
       "capabilities": [
         "measure_power",
         "measure_current",
         "measure_voltage",
         "measure_battery",
-        "meter_power",
-        "measure_temperature"
+        "measure_temperature",
+        "battery_charging_state"
       ],
       "capabilitiesOptions": {
-        "meter_power": {
-          "title": {
-            "en": "Current maximum capacity"
-          }
-        },
         "measure_current": {
           "title": {
             "en": "Battery output current"
@@ -831,9 +827,7 @@
         }
       },
       "energy": {
-        "batteries": [
-          "INTERNAL"
-        ]
+        "homeBattery": true
       },
       "images": {
         "large": "/drivers/storage/assets/images/large.png",
