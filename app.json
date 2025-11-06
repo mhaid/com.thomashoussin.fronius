@@ -51,6 +51,7 @@
   },
   "source": "https://github.com/ThomasHoussin/com.thomashoussin.fronius",
   "homeyCommunityTopicId": 38557,
+  "esm": true,
   "drivers": [
     {
       "id": "GEN24-storage",
