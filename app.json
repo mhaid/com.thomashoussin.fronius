@@ -1,999 +1,1007 @@
 {
-	"_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
-	"id": "com.thomashoussin.fronius",
-	"version": "0.1.17",
-	"compatibility": ">=12.3.0",
-	"sdk": 3,
-	"name": {
-		"en": "Fronius"
-	},
-	"description": {
-		"en": "Taking your energy supply in your own hands"
-	},
-	"brandColor": "#ED1C24",
-	"tags": {
-		"en": [
-			"fronius",
-			"PV",
-			"Smartmeter",
-			"solar",
-			"panels",
-			"inverter",
-			"storage",
-			"battery",
-			"ohmpilot"
-		]
-	},
-	"category": ["energy"],
-	"permissions": [],
-	"images": {
-		"large": "/assets/images/large.png",
-		"small": "/assets/images/small.png"
-	},
-	"author": {
-		"name": "Thomas Houssin",
-		"email": "thomas.houssin@gmail.com"
-	},
-	"contributing": {
-		"donate": {
-			"paypal": {
-				"username": "thomashoussin958"
-			},
-			"githubSponsors": {
-				"username": "ThomasHoussin"
-			}
-		}
-	},
-	"bugs": {
-		"url": "https://github.com/ThomasHoussin/com.thomashoussin.fronius/issues"
-	},
-	"source": "https://github.com/ThomasHoussin/com.thomashoussin.fronius",
-	"homeyCommunityTopicId": 38557,
-	"drivers": [
-		{
-			"id": "GEN24-storage",
-			"name": {
-				"en": "GEN24-storage"
-			},
-			"class": "solarpanel",
-			"capabilities": ["measure_battery", "battery_mode"],
-			"deprecated": true,
-			"capabilitiesOptions": {
-				"measure_battery": {
-					"title": {
-						"en": "Relative charged capacity"
-					}
-				},
-				"measure_power": {
-					"approximated": false
-				}
-			},
-			"energy": {
-				"batteries": ["INTERNAL"]
-			},
-			"images": {
-				"large": "/drivers/GEN24-storage/assets/images/large.png",
-				"small": "/drivers/GEN24-storage/assets/images/small.png"
-			},
-			"pair": [
-				{
-					"id": "enter_ip",
-					"next": "list_devices"
-				},
-				{
-					"id": "list_devices",
-					"template": "list_devices",
-					"navigation": {
-						"prev": "enter_ip",
-						"next": "add_devices"
-					},
-					"options": {
-						"singular": false
-					}
-				},
-				{
-					"id": "add_devices",
-					"template": "add_devices"
-				}
-			],
-			"settings": [
-				{
-					"type": "group",
-					"label": {
-						"en": "Request settings"
-					},
-					"children": [
-						{
-							"id": "ip",
-							"type": "text",
-							"label": {
-								"en": "Fronius Datamanager IP address"
-							}
-						},
-						{
-							"id": "polling_interval",
-							"type": "number",
-							"value": 60,
-							"label": {
-								"en": "Polling interval in seconds"
-							}
-						}
-					]
-				}
-			]
-		},
-		{
-			"id": "fronius-powerflow",
-			"name": {
-				"en": "PowerFlow"
-			},
-			"class": "sensor",
-			"capabilities": [
-				"measure_power",
-				"measure_power.PV",
-				"measure_power.GRID",
-				"measure_power.LOAD",
-				"measure_power.AKKU"
-			],
-			"capabilitiesOptions": {
-				"measure_power.PV": {
-					"title": {
-						"en": "PV Power"
-					}
-				},
-				"measure_power.GRID": {
-					"title": {
-						"en": "Grid Power"
-					}
-				},
-				"measure_power.LOAD": {
-					"title": {
-						"en": "Load Power"
-					}
-				},
-				"measure_power.AKKU": {
-					"title": {
-						"en": "Akku Power"
-					}
-				}
-			},
-			"energy": {
-				"cumulative": true
-			},
-			"images": {
-				"large": "/drivers/fronius-powerflow/assets/images/large.png",
-				"small": "/drivers/fronius-powerflow/assets/images/small.png"
-			},
-			"pair": [
-				{
-					"id": "enter_values"
-				}
-			],
-			"settings": [
-				{
-					"type": "group",
-					"label": {
-						"en": "Request settings"
-					},
-					"children": [
-						{
-							"id": "ip",
-							"type": "text",
-							"label": {
-								"en": "Fronius Datamanager IP address"
-							}
-						},
-						{
-							"id": "polling_interval",
-							"type": "number",
-							"value": 60,
-							"label": {
-								"en": "Polling interval in seconds"
-							}
-						}
-					]
-				},
-				{
-					"id": "cumulative",
-					"type": "checkbox",
-					"value": true,
-					"label": {
-						"en": "Make cumulative in Energy tab"
-					}
-				}
-			]
-		},
-		{
-			"id": "inverter",
-			"name": {
-				"en": "Inverter"
-			},
-			"class": "solarpanel",
-			"capabilities": [
-				"measure_power",
-				"measure_current.AC",
-				"measure_current.DC",
-				"measure_voltage.AC",
-				"measure_voltage.DC",
-				"measure_voltage.DC2",
-				"measure_voltage.DC3",
-				"measure_voltage.DC4",
-				"measure_current.DC2",
-				"measure_current.DC3",
-				"measure_current.DC4",
-				"measure_frequency",
-				"meter_power",
-				"meter_power.YEAR",
-				"meter_power.TOTAL"
-			],
-			"capabilitiesOptions": {
-				"meter_power": {
-					"title": {
-						"en": "Daily Production"
-					}
-				},
-				"meter_power.YEAR": {
-					"title": {
-						"en": "Yearly Production"
-					}
-				},
-				"meter_power.TOTAL": {
-					"title": {
-						"en": "Total Production"
-					}
-				},
-				"measure_current.AC": {
-					"title": {
-						"en": "AC current"
-					}
-				},
-				"measure_current.DC": {
-					"title": {
-						"en": "DC current"
-					}
-				},
-				"measure_current.DC2": {
-					"title": {
-						"en": "DC current for MPPT tracker 2"
-					}
-				},
-				"measure_current.DC3": {
-					"title": {
-						"en": "DC current for MPPT tracker 3"
-					}
-				},
-				"measure_current.DC4": {
-					"title": {
-						"en": "DC current for MPPT tracker 4"
-					}
-				},
-				"measure_voltage.AC": {
-					"title": {
-						"en": "AC voltage"
-					}
-				},
-				"measure_voltage.DC": {
-					"title": {
-						"en": "DC voltage"
-					}
-				},
-				"measure_voltage.DC2": {
-					"title": {
-						"en": "DC voltage for MPPT tracker 2"
-					}
-				},
-				"measure_voltage.DC3": {
-					"title": {
-						"en": "DC voltage for MPPT tracker 3"
-					}
-				},
-				"measure_voltage.DC4": {
-					"title": {
-						"en": "DC voltage for MPPT tracker 4"
-					}
-				},
-				"measure_frequency": {
-					"title": {
-						"en": "Phase frequency"
-					}
-				}
-			},
-			"images": {
-				"large": "/drivers/inverter/assets/images/large.png",
-				"small": "/drivers/inverter/assets/images/small.png"
-			},
-			"pair": [
-				{
-					"id": "enter_ip",
-					"next": "list_devices"
-				},
-				{
-					"id": "list_devices",
-					"template": "list_devices",
-					"navigation": {
-						"prev": "enter_ip",
-						"next": "add_devices"
-					},
-					"options": {
-						"singular": false
-					}
-				},
-				{
-					"id": "add_devices",
-					"template": "add_devices"
-				}
-			],
-			"settings": [
-				{
-					"type": "group",
-					"label": {
-						"en": "Request settings"
-					},
-					"children": [
-						{
-							"id": "ip",
-							"type": "text",
-							"label": {
-								"en": "Fronius Datamanager IP address"
-							}
-						},
-						{
-							"id": "DeviceId",
-							"type": "number",
-							"label": {
-								"en": "Fronius inverter DeviceId"
-							}
-						},
-						{
-							"id": "polling_interval",
-							"type": "number",
-							"value": 60,
-							"label": {
-								"en": "Polling interval in seconds"
-							}
-						}
-					]
-				},
-				{
-					"type": "group",
-					"label": {
-						"en": "Device type"
-					},
-					"children": [
-						{
-							"id": "DT",
-							"type": "number",
-							"value": 0,
-							"label": {
-								"en": "Device type (the correct value should be autodetected)"
-							}
-						},
-						{
-							"id": "MPPTnumber",
-							"type": "number",
-							"value": 1,
-							"min": 1,
-							"max": 4,
-							"label": {
-								"en": "Number of MPPT tracker to display (1-4)"
-							}
-						}
-					]
-				},
-				{
-					"id": "PVPower",
-					"type": "number",
-					"label": {
-						"en": "PV power connected (in watts)"
-					}
-				}
-			]
-		},
-		{
-			"id": "ohmpilot",
-			"name": {
-				"en": "Ohmpilot"
-			},
-			"class": "heater",
-			"capabilities": [
-				"meter_power",
-				"measure_power",
-				"measure_temperature",
-				"ohmpilotstate"
-			],
-			"capabilitiesOptions": {
-				"measure_power": {
-					"title": {
-						"en": "Actual power consumption"
-					}
-				},
-				"meter_power": {
-					"title": {
-						"en": "Total consumed energy"
-					}
-				},
-				"measure_temperature": {
-					"title": {
-						"en": "Temperature from sensor"
-					}
-				}
-			},
-			"images": {
-				"large": "/drivers/ohmpilot/assets/images/large.png",
-				"small": "/drivers/ohmpilot/assets/images/small.png"
-			},
-			"pair": [
-				{
-					"id": "enter_ip",
-					"next": "list_devices"
-				},
-				{
-					"id": "list_devices",
-					"template": "list_devices",
-					"navigation": {
-						"prev": "enter_ip",
-						"next": "add_devices"
-					},
-					"options": {
-						"singular": false
-					}
-				},
-				{
-					"id": "add_devices",
-					"template": "add_devices"
-				}
-			],
-			"settings": [
-				{
-					"type": "group",
-					"label": {
-						"en": "Request settings"
-					},
-					"children": [
-						{
-							"id": "ip",
-							"type": "text",
-							"label": {
-								"en": "Fronius Datamanager IP address"
-							}
-						},
-						{
-							"id": "DeviceId",
-							"type": "number",
-							"label": {
-								"en": "Fronius ohmpilot DeviceId"
-							}
-						},
-						{
-							"id": "polling_interval",
-							"type": "number",
-							"value": 60,
-							"label": {
-								"en": "Polling interval in seconds"
-							}
-						}
-					]
-				}
-			]
-		},
-		{
-			"id": "reporting",
-			"name": {
-				"en": "Reporting"
-			},
-			"class": "sensor",
-			"capabilities": [
-				"meter_power.produced",
-				"meter_power.toGrid",
-				"meter_power.fromGrid",
-				"selfconsumption",
-				"selfconsumption.month",
-				"spending.day",
-				"savings.day",
-				"spending.month",
-				"savings.month",
-				"spending.previousmonth",
-				"button.recoverHistory",
-				"button.resetHistory"
-			],
-			"capabilitiesOptions": {
-				"meter_power.fromGrid": {
-					"title": {
-						"en": "Energy from grid"
-					}
-				},
-				"meter_power.toGrid": {
-					"title": {
-						"en": "Energy injected"
-					}
-				},
-				"meter_power.produced": {
-					"title": {
-						"en": "Energy produced"
-					}
-				},
-				"selfconsumption": {
-					"title": {
-						"en": "Self-consumption rate"
-					}
-				},
-				"selfconsumption.month": {
-					"title": {
-						"en": "Month self-consumption rate"
-					}
-				},
-				"spending.day": {
-					"title": {
-						"en": "Today spending"
-					}
-				},
-				"savings.day": {
-					"title": {
-						"en": "Today savings"
-					}
-				},
-				"spending.month": {
-					"title": {
-						"en": "Month spending"
-					}
-				},
-				"spending.previousmonth": {
-					"title": {
-						"en": "Previous month spending"
-					}
-				},
-				"savings.month": {
-					"title": {
-						"en": "Month savings"
-					}
-				},
-				"button.recoverHistory": {
-					"maintenanceAction": true,
-					"title": {
-						"en": "Recover history"
-					},
-					"desc": {
-						"en": "This will try to get historical data from Fronius datamanager (click once, this may take a while)"
-					}
-				},
-				"button.resetHistory": {
-					"maintenanceAction": true,
-					"title": {
-						"en": "Reset history"
-					},
-					"desc": {
-						"en": "This will reset current month values to 0"
-					}
-				}
-			},
-			"images": {
-				"large": "/drivers/reporting/assets/images/large.png",
-				"small": "/drivers/reporting/assets/images/small.png"
-			},
-			"pair": [
-				{
-					"id": "enter_values"
-				}
-			],
-			"settings": [
-				{
-					"type": "group",
-					"label": {
-						"en": "Request settings"
-					},
-					"children": [
-						{
-							"id": "ip",
-							"type": "text",
-							"label": {
-								"en": "Fronius Datamanager IP address"
-							}
-						},
-						{
-							"id": "DeviceId",
-							"type": "number",
-							"value": -1,
-							"label": {
-								"en": "Primary meter id"
-							}
-						},
-						{
-							"id": "polling_interval",
-							"type": "number",
-							"value": 300,
-							"label": {
-								"en": "Polling interval for data collection, in seconds"
-							}
-						}
-					]
-				},
-				{
-					"type": "group",
-					"label": {
-						"en": "Cost settings"
-					},
-					"children": [
-						{
-							"id": "purchaseprice",
-							"type": "number",
-							"value": 0.1765,
-							"label": {
-								"en": "Electricity purchase price per kwh"
-							}
-						},
-						{
-							"id": "sellprice",
-							"type": "number",
-							"value": 0.1,
-							"label": {
-								"en": "Electricity sell price per kwh"
-							}
-						}
-					]
-				}
-			]
-		},
-		{
-			"id": "smartmeter",
-			"name": {
-				"en": "Smartmeter"
-			},
-			"class": "sensor",
-			"capabilities": [
-				"measure_power",
-				"measure_current",
-				"measure_voltage",
-				"measure_frequency",
-				"meter_power",
-				"meter_power.injected",
-				"measure_current.phase1",
-				"measure_current.phase2",
-				"measure_current.phase3"
-			],
-			"capabilitiesOptions": {
-				"meter_power": {
-					"title": {
-						"en": "Energy consumed"
-					}
-				},
-				"meter_power.injected": {
-					"title": {
-						"en": "Energy injected"
-					}
-				},
-				"measure_current": {
-					"title": {
-						"en": "Current"
-					}
-				},
-				"measure_current.phase1": {
-					"title": {
-						"en": "Current P1"
-					}
-				},
-				"measure_current.phase2": {
-					"title": {
-						"en": "Current P2"
-					}
-				},
-				"measure_current.phase3": {
-					"title": {
-						"en": "Current P3"
-					}
-				},
-				"measure_voltage": {
-					"title": {
-						"en": "Voltage"
-					}
-				},
-				"measure_frequency": {
-					"title": {
-						"en": "Phase frequency"
-					}
-				}
-			},
-			"energy": {
-				"cumulative": true,
-				"cumulativeImportedCapability": "meter_power",
-				"cumulativeExportedCapability": "meter_power.injected"
-			},
-			"images": {
-				"large": "/drivers/smartmeter/assets/images/large.png",
-				"small": "/drivers/smartmeter/assets/images/small.png"
-			},
-			"pair": [
-				{
-					"id": "enter_ip",
-					"next": "list_devices"
-				},
-				{
-					"id": "list_devices",
-					"template": "list_devices",
-					"navigation": {
-						"prev": "enter_ip",
-						"next": "add_devices"
-					},
-					"options": {
-						"singular": false
-					}
-				},
-				{
-					"id": "add_devices",
-					"template": "add_devices"
-				}
-			],
-			"settings": [
-				{
-					"type": "group",
-					"label": {
-						"en": "Request settings"
-					},
-					"children": [
-						{
-							"id": "ip",
-							"type": "text",
-							"label": {
-								"en": "Fronius Datamanager IP address"
-							}
-						},
-						{
-							"id": "DeviceId",
-							"type": "number",
-							"label": {
-								"en": "Fronius inverter DeviceId"
-							}
-						},
-						{
-							"id": "polling_interval",
-							"type": "number",
-							"value": 60,
-							"label": {
-								"en": "Polling interval for data collection, in seconds"
-							}
-						}
-					]
-				},
-				{
-					"id": "cumulative",
-					"type": "checkbox",
-					"value": true,
-					"label": {
-						"en": "Make cumulative in Energy tab"
-					}
-				},
-				{
-					"id": "threePhase",
-					"type": "checkbox",
-					"value": false,
-					"label": {
-						"en": "Report 3-phase if possible"
-					}
-				},
-				{
-					"id": "gen24meterbug",
-					"type": "checkbox",
-					"value": false,
-					"label": {
-						"en": "Use workaround for GEN24 Smartmeter (only if no data reported)"
-					}
-				}
-			]
-		},
-		{
-			"id": "storage",
-			"name": {
-				"en": "Storage"
-			},
-			"class": "battery",
-			"capabilities": [
-				"measure_power",
-				"measure_current",
-				"measure_voltage",
-				"measure_battery",
-				"measure_temperature",
-				"battery_charging_state"
-			],
-			"capabilitiesOptions": {
-				"measure_current": {
-					"title": {
-						"en": "Battery output current"
-					}
-				},
-				"measure_voltage": {
-					"title": {
-						"en": "Battery output voltage"
-					}
-				},
-				"measure_temperature": {
-					"title": {
-						"en": "Temperature"
-					}
-				},
-				"measure_battery": {
-					"title": {
-						"en": "Relative charged capacity"
-					}
-				},
-				"measure_power": {
-					"approximated": true
-				}
-			},
-			"energy": {
-				"homeBattery": true
-			},
-			"images": {
-				"large": "/drivers/storage/assets/images/large.png",
-				"small": "/drivers/storage/assets/images/small.png"
-			},
-			"pair": [
-				{
-					"id": "enter_ip",
-					"next": "list_devices"
-				},
-				{
-					"id": "list_devices",
-					"template": "list_devices",
-					"navigation": {
-						"prev": "enter_ip",
-						"next": "add_devices"
-					},
-					"options": {
-						"singular": false
-					}
-				},
-				{
-					"id": "add_devices",
-					"template": "add_devices"
-				}
-			],
-			"settings": [
-				{
-					"type": "group",
-					"label": {
-						"en": "Request settings"
-					},
-					"children": [
-						{
-							"id": "ip",
-							"type": "text",
-							"label": {
-								"en": "Fronius Datamanager IP address"
-							}
-						},
-						{
-							"id": "DeviceId",
-							"type": "number",
-							"label": {
-								"en": "Fronius inverter DeviceId"
-							}
-						},
-						{
-							"id": "polling_interval",
-							"type": "number",
-							"value": 60,
-							"label": {
-								"en": "Polling interval in seconds"
-							}
-						}
-					]
-				}
-			]
-		}
-	],
-	"capabilities": {
-		"battery_mode": {
-			"type": "string",
-			"title": {
-				"en": "Battery mode"
-			},
-			"getable": true,
-			"setable": false,
-			"icon": "/assets/information.svg"
-		},
-		"measure_frequency": {
-			"type": "number",
-			"title": {
-				"en": "Phase frequency"
-			},
-			"getable": true,
-			"setable": false,
-			"icon": "/assets/frequency.svg",
-			"units": {
-				"en": "Hz"
-			},
-			"decimals": 1
-		},
-		"ohmpilotstate": {
-			"type": "enum",
-			"title": {
-				"en": "OhmPilot state"
-			},
-			"getable": true,
-			"setable": false,
-			"icon": "/assets/information.svg",
-			"values": [
-				{
-					"id": "up",
-					"title": {
-						"en": "Up and running"
-					}
-				},
-				{
-					"id": "keepmin",
-					"title": {
-						"en": "Keep minimum temperature"
-					}
-				},
-				{
-					"id": "legionella",
-					"title": {
-						"en": "Legionella protection"
-					}
-				},
-				{
-					"id": "critical",
-					"title": {
-						"en": "Critical fault"
-					}
-				},
-				{
-					"id": "fault",
-					"title": {
-						"en": "Fault"
-					}
-				},
-				{
-					"id": "boost",
-					"title": {
-						"en": "Boost mode"
-					}
-				},
-				{
-					"id": "unknown",
-					"title": {
-						"en": "Unknown state"
-					}
-				}
-			]
-		},
-		"savings": {
-			"type": "number",
-			"title": {
-				"en": "Savings"
-			},
-			"getable": true,
-			"setable": false,
-			"icon": "/assets/savings.svg",
-			"units": {
-				"en": "€"
-			},
-			"decimals": 2
-		},
-		"selfconsumption": {
-			"type": "number",
-			"title": {
-				"en": "Self-consumption rate"
-			},
-			"getable": true,
-			"setable": false,
-			"icon": "/assets/selfconsumption.svg",
-			"units": {
-				"en": "%"
-			},
-			"decimals": 1
-		},
-		"spending": {
-			"type": "number",
-			"title": {
-				"en": "Spending"
-			},
-			"getable": true,
-			"setable": false,
-			"icon": "/assets/spending.svg",
-			"units": {
-				"en": "€"
-			},
-			"decimals": 2
-		}
-	}
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.thomashoussin.fronius",
+  "version": "0.1.17",
+  "compatibility": ">=12.3.0",
+  "sdk": 3,
+  "name": {
+    "en": "Fronius"
+  },
+  "description": {
+    "en": "Taking your energy supply in your own hands"
+  },
+  "brandColor": "#ED1C24",
+  "tags": {
+    "en": [
+      "fronius",
+      "PV",
+      "Smartmeter",
+      "solar",
+      "panels",
+      "inverter",
+      "storage",
+      "battery",
+      "ohmpilot"
+    ]
+  },
+  "category": [
+    "energy"
+  ],
+  "permissions": [],
+  "images": {
+    "large": "/assets/images/large.png",
+    "small": "/assets/images/small.png"
+  },
+  "author": {
+    "name": "Thomas Houssin",
+    "email": "thomas.houssin@gmail.com"
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "thomashoussin958"
+      },
+      "githubSponsors": {
+        "username": "ThomasHoussin"
+      }
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/ThomasHoussin/com.thomashoussin.fronius/issues"
+  },
+  "source": "https://github.com/ThomasHoussin/com.thomashoussin.fronius",
+  "homeyCommunityTopicId": 38557,
+  "esm": true,
+  "drivers": [
+    {
+      "id": "GEN24-storage",
+      "name": {
+        "en": "GEN24-storage"
+      },
+      "class": "solarpanel",
+      "capabilities": [
+        "measure_battery",
+        "battery_mode"
+      ],
+      "deprecated": true,
+      "capabilitiesOptions": {
+        "measure_battery": {
+          "title": {
+            "en": "Relative charged capacity"
+          }
+        },
+        "measure_power": {
+          "approximated": false
+        }
+      },
+      "energy": {
+        "batteries": [
+          "INTERNAL"
+        ]
+      },
+      "images": {
+        "large": "/drivers/GEN24-storage/assets/images/large.png",
+        "small": "/drivers/GEN24-storage/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "enter_ip",
+          "next": "list_devices"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "prev": "enter_ip",
+            "next": "add_devices"
+          },
+          "options": {
+            "singular": false
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Request settings"
+          },
+          "children": [
+            {
+              "id": "ip",
+              "type": "text",
+              "label": {
+                "en": "Fronius Datamanager IP address"
+              }
+            },
+            {
+              "id": "polling_interval",
+              "type": "number",
+              "value": 60,
+              "label": {
+                "en": "Polling interval in seconds"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fronius-powerflow",
+      "name": {
+        "en": "PowerFlow"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_power",
+        "measure_power.PV",
+        "measure_power.GRID",
+        "measure_power.LOAD",
+        "measure_power.AKKU"
+      ],
+      "capabilitiesOptions": {
+        "measure_power.PV": {
+          "title": {
+            "en": "PV Power"
+          }
+        },
+        "measure_power.GRID": {
+          "title": {
+            "en": "Grid Power"
+          }
+        },
+        "measure_power.LOAD": {
+          "title": {
+            "en": "Load Power"
+          }
+        },
+        "measure_power.AKKU": {
+          "title": {
+            "en": "Akku Power"
+          }
+        }
+      },
+      "energy": {
+        "cumulative": true
+      },
+      "images": {
+        "large": "/drivers/fronius-powerflow/assets/images/large.png",
+        "small": "/drivers/fronius-powerflow/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "enter_values"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Request settings"
+          },
+          "children": [
+            {
+              "id": "ip",
+              "type": "text",
+              "label": {
+                "en": "Fronius Datamanager IP address"
+              }
+            },
+            {
+              "id": "polling_interval",
+              "type": "number",
+              "value": 60,
+              "label": {
+                "en": "Polling interval in seconds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "cumulative",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "en": "Make cumulative in Energy tab"
+          }
+        }
+      ]
+    },
+    {
+      "id": "inverter",
+      "name": {
+        "en": "Inverter"
+      },
+      "class": "solarpanel",
+      "capabilities": [
+        "measure_power",
+        "measure_current.AC",
+        "measure_current.DC",
+        "measure_voltage.AC",
+        "measure_voltage.DC",
+        "measure_voltage.DC2",
+        "measure_voltage.DC3",
+        "measure_voltage.DC4",
+        "measure_current.DC2",
+        "measure_current.DC3",
+        "measure_current.DC4",
+        "measure_frequency",
+        "meter_power",
+        "meter_power.YEAR",
+        "meter_power.TOTAL"
+      ],
+      "capabilitiesOptions": {
+        "meter_power": {
+          "title": {
+            "en": "Daily Production"
+          }
+        },
+        "meter_power.YEAR": {
+          "title": {
+            "en": "Yearly Production"
+          }
+        },
+        "meter_power.TOTAL": {
+          "title": {
+            "en": "Total Production"
+          }
+        },
+        "measure_current.AC": {
+          "title": {
+            "en": "AC current"
+          }
+        },
+        "measure_current.DC": {
+          "title": {
+            "en": "DC current"
+          }
+        },
+        "measure_current.DC2": {
+          "title": {
+            "en": "DC current for MPPT tracker 2"
+          }
+        },
+        "measure_current.DC3": {
+          "title": {
+            "en": "DC current for MPPT tracker 3"
+          }
+        },
+        "measure_current.DC4": {
+          "title": {
+            "en": "DC current for MPPT tracker 4"
+          }
+        },
+        "measure_voltage.AC": {
+          "title": {
+            "en": "AC voltage"
+          }
+        },
+        "measure_voltage.DC": {
+          "title": {
+            "en": "DC voltage"
+          }
+        },
+        "measure_voltage.DC2": {
+          "title": {
+            "en": "DC voltage for MPPT tracker 2"
+          }
+        },
+        "measure_voltage.DC3": {
+          "title": {
+            "en": "DC voltage for MPPT tracker 3"
+          }
+        },
+        "measure_voltage.DC4": {
+          "title": {
+            "en": "DC voltage for MPPT tracker 4"
+          }
+        },
+        "measure_frequency": {
+          "title": {
+            "en": "Phase frequency"
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/inverter/assets/images/large.png",
+        "small": "/drivers/inverter/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "enter_ip",
+          "next": "list_devices"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "prev": "enter_ip",
+            "next": "add_devices"
+          },
+          "options": {
+            "singular": false
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Request settings"
+          },
+          "children": [
+            {
+              "id": "ip",
+              "type": "text",
+              "label": {
+                "en": "Fronius Datamanager IP address"
+              }
+            },
+            {
+              "id": "DeviceId",
+              "type": "number",
+              "label": {
+                "en": "Fronius inverter DeviceId"
+              }
+            },
+            {
+              "id": "polling_interval",
+              "type": "number",
+              "value": 60,
+              "label": {
+                "en": "Polling interval in seconds"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Device type"
+          },
+          "children": [
+            {
+              "id": "DT",
+              "type": "number",
+              "value": 0,
+              "label": {
+                "en": "Device type (the correct value should be autodetected)"
+              }
+            },
+            {
+              "id": "MPPTnumber",
+              "type": "number",
+              "value": 1,
+              "min": 1,
+              "max": 4,
+              "label": {
+                "en": "Number of MPPT tracker to display (1-4)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "PVPower",
+          "type": "number",
+          "label": {
+            "en": "PV power connected (in watts)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ohmpilot",
+      "name": {
+        "en": "Ohmpilot"
+      },
+      "class": "heater",
+      "capabilities": [
+        "meter_power",
+        "measure_power",
+        "measure_temperature",
+        "ohmpilotstate"
+      ],
+      "capabilitiesOptions": {
+        "measure_power": {
+          "title": {
+            "en": "Actual power consumption"
+          }
+        },
+        "meter_power": {
+          "title": {
+            "en": "Total consumed energy"
+          }
+        },
+        "measure_temperature": {
+          "title": {
+            "en": "Temperature from sensor"
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/ohmpilot/assets/images/large.png",
+        "small": "/drivers/ohmpilot/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "enter_ip",
+          "next": "list_devices"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "prev": "enter_ip",
+            "next": "add_devices"
+          },
+          "options": {
+            "singular": false
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Request settings"
+          },
+          "children": [
+            {
+              "id": "ip",
+              "type": "text",
+              "label": {
+                "en": "Fronius Datamanager IP address"
+              }
+            },
+            {
+              "id": "DeviceId",
+              "type": "number",
+              "label": {
+                "en": "Fronius ohmpilot DeviceId"
+              }
+            },
+            {
+              "id": "polling_interval",
+              "type": "number",
+              "value": 60,
+              "label": {
+                "en": "Polling interval in seconds"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reporting",
+      "name": {
+        "en": "Reporting"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "meter_power.produced",
+        "meter_power.toGrid",
+        "meter_power.fromGrid",
+        "selfconsumption",
+        "selfconsumption.month",
+        "spending.day",
+        "savings.day",
+        "spending.month",
+        "savings.month",
+        "spending.previousmonth",
+        "button.recoverHistory",
+        "button.resetHistory"
+      ],
+      "capabilitiesOptions": {
+        "meter_power.fromGrid": {
+          "title": {
+            "en": "Energy from grid"
+          }
+        },
+        "meter_power.toGrid": {
+          "title": {
+            "en": "Energy injected"
+          }
+        },
+        "meter_power.produced": {
+          "title": {
+            "en": "Energy produced"
+          }
+        },
+        "selfconsumption": {
+          "title": {
+            "en": "Self-consumption rate"
+          }
+        },
+        "selfconsumption.month": {
+          "title": {
+            "en": "Month self-consumption rate"
+          }
+        },
+        "spending.day": {
+          "title": {
+            "en": "Today spending"
+          }
+        },
+        "savings.day": {
+          "title": {
+            "en": "Today savings"
+          }
+        },
+        "spending.month": {
+          "title": {
+            "en": "Month spending"
+          }
+        },
+        "spending.previousmonth": {
+          "title": {
+            "en": "Previous month spending"
+          }
+        },
+        "savings.month": {
+          "title": {
+            "en": "Month savings"
+          }
+        },
+        "button.recoverHistory": {
+          "maintenanceAction": true,
+          "title": {
+            "en": "Recover history"
+          },
+          "desc": {
+            "en": "This will try to get historical data from Fronius datamanager (click once, this may take a while)"
+          }
+        },
+        "button.resetHistory": {
+          "maintenanceAction": true,
+          "title": {
+            "en": "Reset history"
+          },
+          "desc": {
+            "en": "This will reset current month values to 0"
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/reporting/assets/images/large.png",
+        "small": "/drivers/reporting/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "enter_values"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Request settings"
+          },
+          "children": [
+            {
+              "id": "ip",
+              "type": "text",
+              "label": {
+                "en": "Fronius Datamanager IP address"
+              }
+            },
+            {
+              "id": "DeviceId",
+              "type": "number",
+              "value": -1,
+              "label": {
+                "en": "Primary meter id"
+              }
+            },
+            {
+              "id": "polling_interval",
+              "type": "number",
+              "value": 300,
+              "label": {
+                "en": "Polling interval for data collection, in seconds"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Cost settings"
+          },
+          "children": [
+            {
+              "id": "purchaseprice",
+              "type": "number",
+              "value": 0.1765,
+              "label": {
+                "en": "Electricity purchase price per kwh"
+              }
+            },
+            {
+              "id": "sellprice",
+              "type": "number",
+              "value": 0.1,
+              "label": {
+                "en": "Electricity sell price per kwh"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "smartmeter",
+      "name": {
+        "en": "Smartmeter"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_power",
+        "measure_current",
+        "measure_voltage",
+        "measure_frequency",
+        "meter_power",
+        "meter_power.injected",
+        "measure_current.phase1",
+        "measure_current.phase2",
+        "measure_current.phase3"
+      ],
+      "capabilitiesOptions": {
+        "meter_power": {
+          "title": {
+            "en": "Energy consumed"
+          }
+        },
+        "meter_power.injected": {
+          "title": {
+            "en": "Energy injected"
+          }
+        },
+        "measure_current": {
+          "title": {
+            "en": "Current"
+          }
+        },
+        "measure_current.phase1": {
+          "title": {
+            "en": "Current P1"
+          }
+        },
+        "measure_current.phase2": {
+          "title": {
+            "en": "Current P2"
+          }
+        },
+        "measure_current.phase3": {
+          "title": {
+            "en": "Current P3"
+          }
+        },
+        "measure_voltage": {
+          "title": {
+            "en": "Voltage"
+          }
+        },
+        "measure_frequency": {
+          "title": {
+            "en": "Phase frequency"
+          }
+        }
+      },
+      "energy": {
+        "cumulative": true,
+        "cumulativeImportedCapability": "meter_power",
+        "cumulativeExportedCapability": "meter_power.injected"
+      },
+      "images": {
+        "large": "/drivers/smartmeter/assets/images/large.png",
+        "small": "/drivers/smartmeter/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "enter_ip",
+          "next": "list_devices"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "prev": "enter_ip",
+            "next": "add_devices"
+          },
+          "options": {
+            "singular": false
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Request settings"
+          },
+          "children": [
+            {
+              "id": "ip",
+              "type": "text",
+              "label": {
+                "en": "Fronius Datamanager IP address"
+              }
+            },
+            {
+              "id": "DeviceId",
+              "type": "number",
+              "label": {
+                "en": "Fronius inverter DeviceId"
+              }
+            },
+            {
+              "id": "polling_interval",
+              "type": "number",
+              "value": 60,
+              "label": {
+                "en": "Polling interval for data collection, in seconds"
+              }
+            }
+          ]
+        },
+        {
+          "id": "cumulative",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "en": "Make cumulative in Energy tab"
+          }
+        },
+        {
+          "id": "threePhase",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "en": "Report 3-phase if possible"
+          }
+        },
+        {
+          "id": "gen24meterbug",
+          "type": "checkbox",
+          "value": false,
+          "label": {
+            "en": "Use workaround for GEN24 Smartmeter (only if no data reported)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "storage",
+      "name": {
+        "en": "Storage"
+      },
+      "class": "battery",
+      "capabilities": [
+        "measure_power",
+        "measure_current",
+        "measure_voltage",
+        "measure_battery",
+        "measure_temperature",
+        "battery_charging_state"
+      ],
+      "capabilitiesOptions": {
+        "measure_current": {
+          "title": {
+            "en": "Battery output current"
+          }
+        },
+        "measure_voltage": {
+          "title": {
+            "en": "Battery output voltage"
+          }
+        },
+        "measure_temperature": {
+          "title": {
+            "en": "Temperature"
+          }
+        },
+        "measure_battery": {
+          "title": {
+            "en": "Relative charged capacity"
+          }
+        },
+        "measure_power": {
+          "approximated": true
+        }
+      },
+      "energy": {
+        "homeBattery": true
+      },
+      "images": {
+        "large": "/drivers/storage/assets/images/large.png",
+        "small": "/drivers/storage/assets/images/small.png"
+      },
+      "pair": [
+        {
+          "id": "enter_ip",
+          "next": "list_devices"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "prev": "enter_ip",
+            "next": "add_devices"
+          },
+          "options": {
+            "singular": false
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Request settings"
+          },
+          "children": [
+            {
+              "id": "ip",
+              "type": "text",
+              "label": {
+                "en": "Fronius Datamanager IP address"
+              }
+            },
+            {
+              "id": "DeviceId",
+              "type": "number",
+              "label": {
+                "en": "Fronius inverter DeviceId"
+              }
+            },
+            {
+              "id": "polling_interval",
+              "type": "number",
+              "value": 60,
+              "label": {
+                "en": "Polling interval in seconds"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "capabilities": {
+    "battery_mode": {
+      "type": "string",
+      "title": {
+        "en": "Battery mode"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/information.svg"
+    },
+    "measure_frequency": {
+      "type": "number",
+      "title": {
+        "en": "Phase frequency"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/frequency.svg",
+      "units": {
+        "en": "Hz"
+      },
+      "decimals": 1
+    },
+    "ohmpilotstate": {
+      "type": "enum",
+      "title": {
+        "en": "OhmPilot state"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/information.svg",
+      "values": [
+        {
+          "id": "up",
+          "title": {
+            "en": "Up and running"
+          }
+        },
+        {
+          "id": "keepmin",
+          "title": {
+            "en": "Keep minimum temperature"
+          }
+        },
+        {
+          "id": "legionella",
+          "title": {
+            "en": "Legionella protection"
+          }
+        },
+        {
+          "id": "critical",
+          "title": {
+            "en": "Critical fault"
+          }
+        },
+        {
+          "id": "fault",
+          "title": {
+            "en": "Fault"
+          }
+        },
+        {
+          "id": "boost",
+          "title": {
+            "en": "Boost mode"
+          }
+        },
+        {
+          "id": "unknown",
+          "title": {
+            "en": "Unknown state"
+          }
+        }
+      ]
+    },
+    "savings": {
+      "type": "number",
+      "title": {
+        "en": "Savings"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/savings.svg",
+      "units": {
+        "en": "€"
+      },
+      "decimals": 2
+    },
+    "selfconsumption": {
+      "type": "number",
+      "title": {
+        "en": "Self-consumption rate"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/selfconsumption.svg",
+      "units": {
+        "en": "%"
+      },
+      "decimals": 1
+    },
+    "spending": {
+      "type": "number",
+      "title": {
+        "en": "Spending"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/spending.svg",
+      "units": {
+        "en": "€"
+      },
+      "decimals": 2
+    }
+  }
 }
