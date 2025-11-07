@@ -3,7 +3,7 @@
 	"name": {
 		"en": "GEN24-storage"
 	},
-	"class": "solarpanel",
+	"class": "battery",
 	"capabilities": ["measure_battery", "battery_mode"],
 	"deprecated": true,
 	"capabilitiesOptions": {
@@ -15,7 +15,7 @@
 		}
 	},
 	"energy": {
-		"batteries": ["INTERNAL"]
+		"homeBattery": true
 	},
 	"images": {
 		"large": "/drivers/GEN24-storage/assets/images/large.png",
