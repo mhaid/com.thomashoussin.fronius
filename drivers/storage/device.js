@@ -61,7 +61,7 @@ class StorageDevice extends FroniusDevice {
 				: data.Controller.StateOfCharge_Relative,
 		);
 		//power approximation
-		this.setCapabilityValue("measure_power", -voltage * current);
+		this.setCapabilityValue("measure_power", voltage * current);
 	}
 }
 
