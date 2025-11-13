@@ -85,5 +85,8 @@
 	},
 	"0.1.17": {
 		"en": "Add battery charging state capability check at init"
+	},
+	"0.1.18": {
+		"en": "Fixed storage: corrected battery power sign (removed negative sign). Fixed GEN24-storage: corrected device class and added homeBattery flag"
 	}
 }

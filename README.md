@@ -16,6 +16,9 @@ Feel free to donate to  support the project !
 [<img src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif">](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=RVBS24SPLU922&currency_code=EUR)
 
 # Version History
+### 0.1.18:
+	Fixed storage: corrected battery power sign (removed negative sign)
+	Fixed GEN24-storage: corrected device class and added homeBattery flag
 ### 0.1.14: 
 	Added new cumulative field in smartmeter ; fixed contributing field.
 ### 0.1.13: 
