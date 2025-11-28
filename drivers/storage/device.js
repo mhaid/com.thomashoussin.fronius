@@ -14,6 +14,14 @@ class StorageDevice extends FroniusDevice {
 			this.addCapability("battery_charging_state");
 		}
 
+		// Remove deprecated meter_power capability
+		if (this.hasCapability("meter_power")) {
+			console.log(
+				`Removing deprecated capability meter_power from device ${this.getName()}`,
+			);
+			this.removeCapability("meter_power");
+		}
+
 		// Enable device polling
 		this.polling = true;
 		this.addListener("poll", this.pollDevice);
