@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(npm test)",
-      "Bash(npx biome:*)"
+      "Bash(npx biome:*)",
+      "Bash(npm run test:coverage:*)"
     ]
   }
 }
