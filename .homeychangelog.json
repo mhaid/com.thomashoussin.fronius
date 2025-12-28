@@ -91,5 +91,8 @@
 	},
 	"0.1.19": {
 		"en": "Fixed Storage: removed deprecated meter_power capability (fixes #81)"
+	},
+	"0.1.20": {
+		"en": "Bugfix on doSubmit in pairing HTML files. Fixed typo in HTML files."
 	}
 }
