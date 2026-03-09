@@ -169,6 +169,16 @@
           "title": {
             "en": "Backup mode"
           }
+        },
+        "fronius_autonomy": {
+          "title": {
+            "en": "Autonomy"
+          }
+        },
+        "fronius_self_consumption": {
+          "title": {
+            "en": "Self-consumption"
+          }
         }
       },
       "energy": {
@@ -916,6 +926,19 @@
       "setable": false,
       "icon": "/assets/information.svg"
     },
+    "fronius_autonomy": {
+      "type": "number",
+      "title": {
+        "en": "Autonomy"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/selfconsumption.svg",
+      "units": {
+        "en": "%"
+      },
+      "decimals": 1
+    },
     "fronius_backup_mode": {
       "type": "boolean",
       "title": {
@@ -942,6 +965,19 @@
       "getable": true,
       "setable": false,
       "icon": "/assets/information.svg"
+    },
+    "fronius_self_consumption": {
+      "type": "number",
+      "title": {
+        "en": "Self-consumption"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/selfconsumption.svg",
+      "units": {
+        "en": "%"
+      },
+      "decimals": 1
     },
     "measure_frequency": {
       "type": "number",
@@ -1026,32 +1062,6 @@
       "type": "number",
       "title": {
         "en": "Self-consumption rate"
-      },
-      "getable": true,
-      "setable": false,
-      "icon": "/assets/selfconsumption.svg",
-      "units": {
-        "en": "%"
-      },
-      "decimals": 1
-    },
-    "fronius_autonomy": {
-      "type": "number",
-      "title": {
-        "en": "Autonomy"
-      },
-      "getable": true,
-      "setable": false,
-      "icon": "/assets/selfconsumption.svg",
-      "units": {
-        "en": "%"
-      },
-      "decimals": 1
-    },
-    "fronius_self_consumption": {
-      "type": "number",
-      "title": {
-        "en": "Self-consumption"
       },
       "getable": true,
       "setable": false,

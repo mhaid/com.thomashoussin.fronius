@@ -15,6 +15,20 @@ class PowerFlow extends FroniusDevice {
 		   this.addCapability("fronius_backup_mode");
 	   }
 
+	   if (!this.hasCapability("fronius_autonomy")) {
+		console.log(
+			`Adding capability fronius_autonomy to device ${this.getName()}`,
+		);
+		this.addCapability("fronius_autonomy");
+	}
+
+	if (!this.hasCapability("fronius_self_consumption")) {
+		console.log(
+			`Adding capability fronius_self_consumption to device ${this.getName()}`,
+		);
+		this.addCapability("fronius_self_consumption");
+	}
+
 	   await super.onInit();
    }
 
