@@ -58,6 +58,27 @@ class PowerFlow extends FroniusDevice {
 		this.setCapabilityValue("measure_power.GRID", pgrid);
 		this.setCapabilityValue("measure_power.AKKU", pakku);
 
+		const relAutonomy =
+			typeof data.rel_Autonomy === "undefined" || data.rel_Autonomy == null
+				? 0
+				: data.rel_Autonomy;
+		const relSelfConsumption =
+			typeof data.rel_SelfConsumption === "undefined" ||
+			data.rel_SelfConsumption == null
+				? 0
+				: data.rel_SelfConsumption;
+
+		if (this.hasCapability("fronius_autonomy")) {
+			this.setCapabilityValue("fronius_autonomy", relAutonomy);
+		}
+
+		if (this.hasCapability("fronius_self_consumption")) {
+			this.setCapabilityValue(
+				"fronius_self_consumption",
+				relSelfConsumption,
+			);
+		}
+
 		/* grid power + Akku power
       IDKW, homey adds power produced by PV in the energy tab (see for example https://github.com/DiedB/Homey-SolarPanels/issues/128)
       by using measure_power = grid power + akku power , the correct value should be displayed in energy tab assuming all PV power is used
@@ -67,11 +88,7 @@ class PowerFlow extends FroniusDevice {
 		// BackupMode: true = house on backup, false = on grid (GEN24 with battery only)
 		if (this.hasCapability("fronius_backup_mode")) {
 			const backupMode =
-				typeof data.BackupMode === "boolean"
-					? data.BackupMode
-						? "Backup"
-						: "Grid"
-					: "Unknown";
+				typeof data.BackupMode === "boolean" ? data.BackupMode : false;
 			this.setCapabilityValue("fronius_backup_mode", backupMode).catch(
 				this.error,
 			);

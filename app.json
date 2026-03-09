@@ -140,7 +140,9 @@
         "measure_power.GRID",
         "measure_power.LOAD",
         "measure_power.AKKU",
-        "fronius_backup_mode"
+        "fronius_backup_mode",
+        "fronius_autonomy",
+        "fronius_self_consumption"
       ],
       "capabilitiesOptions": {
         "measure_power.PV": {
@@ -915,7 +917,7 @@
       "icon": "/assets/information.svg"
     },
     "fronius_backup_mode": {
-      "type": "string",
+      "type": "boolean",
       "title": {
         "en": "Backup mode"
       },
@@ -1024,6 +1026,32 @@
       "type": "number",
       "title": {
         "en": "Self-consumption rate"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/selfconsumption.svg",
+      "units": {
+        "en": "%"
+      },
+      "decimals": 1
+    },
+    "fronius_autonomy": {
+      "type": "number",
+      "title": {
+        "en": "Autonomy"
+      },
+      "getable": true,
+      "setable": false,
+      "icon": "/assets/selfconsumption.svg",
+      "units": {
+        "en": "%"
+      },
+      "decimals": 1
+    },
+    "fronius_self_consumption": {
+      "type": "number",
+      "title": {
+        "en": "Self-consumption"
       },
       "getable": true,
       "setable": false,

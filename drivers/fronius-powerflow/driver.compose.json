@@ -10,7 +10,9 @@
 		"measure_power.GRID",
 		"measure_power.LOAD",
 		"measure_power.AKKU",
-		"fronius_backup_mode"
+		"fronius_backup_mode",
+		"fronius_autonomy",
+		"fronius_self_consumption"
 	],
 	"capabilitiesOptions": {
 		"measure_power.PV": {
@@ -27,6 +29,12 @@
 		},
 		"fronius_backup_mode": {
 			"title": { "en": "Backup mode" }
+		},
+		"fronius_autonomy": {
+			"title": { "en": "Autonomy" }
+		},
+		"fronius_self_consumption": {
+			"title": { "en": "Self-consumption" }
 		}
 	},
 	"energy": {
