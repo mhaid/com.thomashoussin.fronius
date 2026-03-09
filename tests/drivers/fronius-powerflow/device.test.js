@@ -15,6 +15,7 @@ class TestPowerFlow extends PowerFlow {
 			"measure_power.LOAD",
 			"measure_power.GRID",
 			"measure_power.AKKU",
+			"fronius_backup_mode",
 		]);
 		this._capabilityValues = new Map();
 		this._settings = {
@@ -214,6 +215,49 @@ describe("PowerFlow", () => {
 			expect(device.getCapabilityValue("measure_power.GRID")).toBe(-2000);
 			expect(device.getCapabilityValue("measure_power.AKKU")).toBe(0);
 			expect(device.getCapabilityValue("measure_power")).toBe(-2000);
+		});
+
+		it("should set BackupMode to Grid when false", () => {
+			const data = {
+				P_PV: 5000,
+				P_Load: -3000,
+				P_Grid: -2000,
+				P_Akku: 0,
+				BackupMode: false,
+			};
+
+			device.updateValues(data);
+
+			expect(device.getCapabilityValue("fronius_backup_mode")).toBe("Grid");
+		});
+
+		it("should set BackupMode to Backup when true", () => {
+			const data = {
+				P_PV: 1000,
+				P_Load: -500,
+				P_Grid: null,
+				P_Akku: -500,
+				BackupMode: true,
+			};
+
+			device.updateValues(data);
+
+			expect(device.getCapabilityValue("fronius_backup_mode")).toBe("Backup");
+		});
+
+		it("should set BackupMode to Unknown when undefined", () => {
+			const data = {
+				P_PV: 5000,
+				P_Load: -3000,
+				P_Grid: -2000,
+				P_Akku: 0,
+			};
+
+			device.updateValues(data);
+
+			expect(device.getCapabilityValue("fronius_backup_mode")).toBe(
+				"Unknown",
+			);
 		});
 	});
 

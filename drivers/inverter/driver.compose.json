@@ -6,6 +6,7 @@
 	"class": "solarpanel",
 	"capabilities": [
 		"measure_power",
+		"measure_power.apparent",
 		"measure_current.AC",
 		"measure_current.DC",
 		"measure_voltage.AC",
@@ -19,7 +20,9 @@
 		"measure_frequency",
 		"meter_power",
 		"meter_power.YEAR",
-		"meter_power.TOTAL"
+		"meter_power.TOTAL",
+		"fronius_inverter_state",
+		"fronius_error_code"
 	],
 	"capabilitiesOptions": {
 		"meter_power": {
@@ -63,6 +66,15 @@
 		},
 		"measure_frequency": {
 			"title": { "en": "Phase frequency" }
+		},
+		"measure_power.apparent": {
+			"title": { "en": "Apparent Power (VA)" }
+		},
+		"fronius_inverter_state": {
+			"title": { "en": "Inverter state" }
+		},
+		"fronius_error_code": {
+			"title": { "en": "Error code" }
 		}
 	},
 	"images": {

@@ -9,7 +9,8 @@
 		"measure_power.PV",
 		"measure_power.GRID",
 		"measure_power.LOAD",
-		"measure_power.AKKU"
+		"measure_power.AKKU",
+		"fronius_backup_mode"
 	],
 	"capabilitiesOptions": {
 		"measure_power.PV": {
@@ -23,6 +24,9 @@
 		},
 		"measure_power.AKKU": {
 			"title": { "en": "Akku Power" }
+		},
+		"fronius_backup_mode": {
+			"title": { "en": "Backup mode" }
 		}
 	},
 	"energy": {

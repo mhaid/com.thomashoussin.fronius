@@ -47,6 +47,19 @@ class PowerFlow extends FroniusDevice {
       by using measure_power = grid power + akku power , the correct value should be displayed in energy tab assuming all PV power is used
       */
 		this.setCapabilityValue("measure_power", pgrid + pakku);
+
+		// BackupMode: true = house on backup, false = on grid (GEN24 with battery only)
+		if (this.hasCapability("fronius_backup_mode")) {
+			const backupMode =
+				typeof data.BackupMode === "boolean"
+					? data.BackupMode
+						? "Backup"
+						: "Grid"
+					: "Unknown";
+			this.setCapabilityValue("fronius_backup_mode", backupMode).catch(
+				this.error,
+			);
+		}
 	}
 
 	async onSettings({ oldSettings, newSettings, changedKeys }) {

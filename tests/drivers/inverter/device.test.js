@@ -447,4 +447,82 @@ describe("Inverter", () => {
 			expect(device.getCapabilityValue("meter_power.TOTAL")).toBe(100000000);
 		});
 	});
+
+	describe("updateValues - SAC and DeviceStatus", () => {
+		beforeEach(() => {
+			device._capabilities.add("measure_power.apparent");
+			device._capabilities.add("fronius_inverter_state");
+			device._capabilities.add("fronius_error_code");
+		});
+
+		it("should set apparent power (SAC) when provided", () => {
+			const data = {
+				PAC: { Value: 2500 },
+				SAC: { Value: 2600 },
+			};
+
+			device.updateValues(data);
+
+			expect(device.getCapabilityValue("measure_power.apparent")).toBe(2600);
+		});
+
+		it("should set SAC to 0 when not provided", () => {
+			const data = { PAC: { Value: 2500 } };
+
+			device.updateValues(data);
+
+			expect(device.getCapabilityValue("measure_power.apparent")).toBe(0);
+		});
+
+		it("should set inverter state from InverterState string (GEN24)", () => {
+			const data = {
+				DeviceStatus: {
+					ErrorCode: 0,
+					InverterState: "Running",
+					StatusCode: 7,
+				},
+			};
+
+			device.updateValues(data);
+
+			expect(device.getCapabilityValue("fronius_inverter_state")).toBe(
+				"Running",
+			);
+			expect(device.getCapabilityValue("fronius_error_code")).toBe("No error");
+		});
+
+		it("should set inverter state from StatusCode when InverterState missing (Classic)", () => {
+			const data = {
+				DeviceStatus: {
+					ErrorCode: 0,
+					StatusCode: 7,
+				},
+			};
+
+			device.updateValues(data);
+
+			expect(device.getCapabilityValue("fronius_inverter_state")).toBe(
+				"Running",
+			);
+		});
+
+		it("should show error text when ErrorCode non-zero", () => {
+			const data = {
+				DeviceStatus: {
+					ErrorCode: 42,
+					StatusCode: 10,
+					InverterState: "Error",
+				},
+			};
+
+			device.updateValues(data);
+
+			expect(device.getCapabilityValue("fronius_error_code")).toBe(
+				"Error 42",
+			);
+			expect(device.getCapabilityValue("fronius_inverter_state")).toBe(
+				"Error",
+			);
+		});
+	});
 });
