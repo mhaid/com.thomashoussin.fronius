@@ -450,28 +450,8 @@ describe("Inverter", () => {
 
 	describe("updateValues - SAC and DeviceStatus", () => {
 		beforeEach(() => {
-			device._capabilities.add("measure_power.apparent");
 			device._capabilities.add("fronius_inverter_state");
 			device._capabilities.add("fronius_error_code");
-		});
-
-		it("should set apparent power (SAC) when provided", () => {
-			const data = {
-				PAC: { Value: 2500 },
-				SAC: { Value: 2600 },
-			};
-
-			device.updateValues(data);
-
-			expect(device.getCapabilityValue("measure_power.apparent")).toBe(2600);
-		});
-
-		it("should set SAC to 0 when not provided", () => {
-			const data = { PAC: { Value: 2500 } };
-
-			device.updateValues(data);
-
-			expect(device.getCapabilityValue("measure_power.apparent")).toBe(0);
 		});
 
 		it("should set inverter state from InverterState string (GEN24)", () => {

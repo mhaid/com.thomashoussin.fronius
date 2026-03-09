@@ -2,6 +2,22 @@ import fetch from "node-fetch";
 import FroniusDevice from "../../lib/device.js";
 
 class PowerFlow extends FroniusDevice {
+	/**
+	* onInit is called when the device is initialized.
+	*/
+	async onInit() {
+	   this.log("Device has been initialized");
+
+	   if (!this.hasCapability("fronius_backup_mode")) {
+		   console.log(
+			   `Adding capability fronius_backup_mode to device ${this.getName()}`,
+		   );
+		   this.addCapability("fronius_backup_mode");
+	   }
+
+	   await super.onInit();
+   }
+
 	updateFroniusDevice() {
 		const settings = this.getSettings();
 		const updatePath = "/solar_api/v1/GetPowerFlowRealtimeData.fcgi";

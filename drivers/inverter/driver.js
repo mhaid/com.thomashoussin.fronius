@@ -25,6 +25,7 @@ function froniusToDevice(json, ip, DeviceId) {
 		},
 		capabilities: [
 			"measure_power",
+			"measure_powe.apparent",
 			"measure_current.AC",
 			"measure_current.DC",
 			"measure_voltage.AC",

@@ -48,10 +48,14 @@ class StorageDevice extends FroniusDevice {
 		//Voltage DC
 		this.setCapabilityValue("measure_voltage", voltage);
 		// Charging state
-		this.setCapabilityValue(
-			"battery_charging_state",
-			current > 0 ? "charging" : current < 0 ? "discharging" : "idle",
-		);
+		if (this.hasCapability("battery_charging_state")) {
+			this.setCapabilityValue(
+				"battery_charging_state",
+				current > 0 ? "charging" : current < 0 ? "discharging" : "idle",
+			).catch(
+				this.error,
+			);
+		}
 		//Voltage Current
 		this.setCapabilityValue("measure_current", current);
 		//temp ; default to 0

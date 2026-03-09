@@ -146,12 +146,6 @@ class Inverter extends FroniusDevice {
 			"measure_power",
 			typeof data.PAC === "undefined" ? 0 : data.PAC.Value,
 		).catch(this.error);
-		//Apparent power (VA) ; default to 0
-		if (this.hasCapability("measure_power.apparent"))
-			this.setCapabilityValue(
-				"measure_power.apparent",
-				data.SAC?.Value ?? 0,
-			).catch(this.error);
 		//AC current ; default to 0
 		this.setCapabilityValue(
 			"measure_current.AC",
