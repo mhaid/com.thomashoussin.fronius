@@ -32,13 +32,13 @@
 			"approximated": true
 		},
 		"meter_power": {
-			"title": { "en": "Total battery energy throughput (kWh)" }
+			"title": { "en": "Total throughput" }
 		},
 		"meter_power.charged": {
-			"title": { "en": "Charged energy imported to battery (kWh)" }
+			"title": { "en": "Charged energy" }
 		},
 		"meter_power.discharged": {
-			"title": { "en": "Discharged energy exported from battery (kWh)" }
+			"title": { "en": "Discharged energy" }
 		}
 	},
 	"energy": {
