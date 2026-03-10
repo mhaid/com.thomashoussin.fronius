@@ -252,6 +252,9 @@
         "fronius_inverter_state",
         "fronius_error_code"
       ],
+      "energy": {
+        "meterPowerExportedCapability": "meter_power.TOTAL"
+      },
       "capabilitiesOptions": {
         "meter_power": {
           "title": {
@@ -934,6 +937,7 @@
       "getable": true,
       "setable": false,
       "icon": "/assets/selfconsumption.svg",
+      "insights": true,
       "units": {
         "en": "%"
       },
@@ -946,7 +950,8 @@
       },
       "getable": true,
       "setable": false,
-      "icon": "/assets/information.svg"
+      "icon": "/assets/information.svg",
+      "insights": true
     },
     "fronius_error_code": {
       "type": "string",
@@ -974,6 +979,7 @@
       "getable": true,
       "setable": false,
       "icon": "/assets/selfconsumption.svg",
+      "insights": true,
       "units": {
         "en": "%"
       },

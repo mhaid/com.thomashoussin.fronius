@@ -23,6 +23,9 @@
 		"fronius_inverter_state",
 		"fronius_error_code"
 	],
+	"energy": {
+		"meterPowerExportedCapability": "meter_power.TOTAL"
+	},
 	"capabilitiesOptions": {
 		"meter_power": {
 			"title": { "en": "Daily Production" }
